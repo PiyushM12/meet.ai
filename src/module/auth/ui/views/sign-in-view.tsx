@@ -4,6 +4,7 @@ import { z } from "zod";
 import { OctagonAlertIcon } from "lucide-react";
 // sign in page was completed
 import { Input } from "@/components/ui/input";
+import {FaGithub,FaGoogle} from "react-icons/fa"
 import { Button } from "@/components/ui/button";
 import { authClient } from "@/lib/auth-client";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -42,6 +43,27 @@ export const SignInView = () => {
     },
   });
 
+      const onSocial = (provider:"github"|"google") => {
+      setError(null);
+      setPending(true);
+      authClient.signIn.social(
+        {
+          provider:provider,
+          callbackURL:"/",
+        },
+        {
+          onSuccess: () => {
+            
+              setPending(false);
+          },
+          onError: ({ error }) => {
+            setError(error.message);
+              setPending(false);
+          },
+        }
+      );
+    };
+
   const onSubmit = (data: z.infer<typeof formSchema>) => {
     setError(null);
     setPending(true);
@@ -49,6 +71,7 @@ export const SignInView = () => {
       {
         email: data.email,
         password: data.password,
+        callbackURL:"/"
       },
       {
         onSuccess: () => {
@@ -128,11 +151,17 @@ export const SignInView = () => {
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
-                  <Button variant="outline" type="button" className="w-full">
-                    Google
+                  <Button 
+                  onClick={()=>onSocial("google")
+                  }
+                  variant="outline" type="button" className="w-full">
+                   < FaGoogle/>
                   </Button>
-                  <Button variant="outline" type="button" className="w-full">
-                    Github
+                  <Button 
+                  onClick={()=>onSocial("github")
+                  }
+                  variant="outline" type="button" className="w-full">
+                   < FaGithub/>
                   </Button>
                 </div>
 
