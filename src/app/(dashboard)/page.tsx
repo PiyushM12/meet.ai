@@ -7,14 +7,14 @@ import { redirect } from 'next/navigation'
 import React from 'react'
 
 const Page = async () => {
-  const data= await caller.hello({text:"piyush"})
+ // const data= await caller.hello({text:"piyush"})
   const session = await auth.api.getSession({
     headers:await headers()
-  });
+  }); 
   if(!session){
     redirect("/auth/sign-in");
   }
-  return <p>{data.greeting}</p>
+  // return <p>{data.greeting}</p>
   return (
    <HomeView/>
   )
