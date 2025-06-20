@@ -13,6 +13,7 @@ import { redirect } from "next/navigation";
 import { SearchParams } from "nuqs";
 import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
+import Link from "next/link";
 
 interface Props {
   searchParams: Promise<SearchParams>;
@@ -30,8 +31,7 @@ const Page = async ({ searchParams }: Props) => {
   void queryClient.prefetchQuery(trpc.meetings.getMany.queryOptions({
     ...filters
   }));
-  return (
-    <>
+  return (<>
       <MeetingsListHeader />
       <HydrationBoundary state={dehydrate(queryClient)}>
         <Suspense fallback={<MeetingsViewLoading />}>
