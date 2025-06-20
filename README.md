@@ -19,7 +19,6 @@ Meet.ai is a full-stack, modular, and scalable meeting management platform built
 
 ## 📁 Project Structure
 
-> View this in a Mermaid-enabled markdown renderer (GitHub, Notion with plugin, etc.)
 
 ```mermaid
 graph TD
@@ -52,54 +51,23 @@ graph TD
   A1b3 --> D2[page.tsx]
   A1b3 --> D3[agents]
   A1b3 --> D4[meetings]
+
   D3 --> D3a[page.tsx]
-  D3 --> D3b[[agentId]/page.tsx]
+  D3 --> D3b["[agentId]/page.tsx"]
   D4 --> D4a[page.tsx]
-  D4 --> D4b[[meetingId]/page.tsx]
+  D4 --> D4b["[meetingId]/page.tsx"]
 
   A1b4 --> E1[layout.tsx]
   A1b4 --> E2[sign-in/page.tsx]
   A1b4 --> E3[sign-up/page.tsx]
 
   A1b5 --> F1[layout.tsx]
-  A1b5 --> F2[[meetingId]/page.tsx]
+  A1b5 --> F2["[meetingId]/page.tsx"]
 
-  A1b6 --> G1[auth/[...all]/route.ts]
-  A1b6 --> G2[calendar/oauth/{start, callback}/route.ts]
-  A1b6 --> G3[trpc/[trpc]/route.ts]
+  A1b6 --> G1["auth/...all/route.ts"]
+  A1b6 --> G2["calendar/oauth/start,callback/route.ts"]
+  A1b6 --> G3["trpc/trpc/route.ts"]
   A1b6 --> G4[webhook/route.ts]
-
-  A1c --> C1[command-select.tsx]
-  A1c --> C2[data-table.tsx]
-  A1c --> C3[error-state.tsx]
-  A1c --> C4[loading-state.tsx]
-  A1c --> C5[ui/...many primitives]
-
-  A1d --> D1[schema.ts]
-  A1d --> D2[index.ts]
-
-  A1e --> E1[use-confirm.tsx]
-  A1e --> E2[use-mobile.ts]
-
-  A1f --> F1[auth.ts]
-  A1f --> F2[stream-video.ts]
-  A1f --> F3[utils.ts]
-
-  A1g --> G1[agents]
-  A1g --> G2[meetings]
-  A1g --> G3[call]
-  A1g --> G4[dashboard]
-  A1g --> G5[auth]
-  A1g --> G6[home]
-
-  A1h --> H1[client.tsx]
-  A1h --> H2[init.ts]
-  A1h --> H3[query-client.ts]
-  A1h --> H4[server.tsx]
-  A1h --> H5[routers/_app.ts]
-
-
-
 
 All pages and layouts follow app/ routing convention
 
