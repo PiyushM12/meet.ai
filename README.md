@@ -19,6 +19,7 @@ Meet.ai is a full-stack, modular, and scalable meeting management platform built
 
 ## 📁 Project Structure
 
+Below is the Mermaid diagram representing the directory structure:
 
 ```mermaid
 graph TD
@@ -68,6 +69,7 @@ graph TD
   A1b6 --> G2["calendar/oauth/start,callback/route.ts"]
   A1b6 --> G3["trpc/[trpc]/route.ts"]
   A1b6 --> G4["webhook/route.ts"]
+
 
 All pages and layouts follow app/ routing convention
 
