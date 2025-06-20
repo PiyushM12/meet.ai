@@ -1,23 +1,19 @@
-import { auth } from '@/lib/auth'
-import { HomeView } from '@/module/home/ui/views/home-view'
-import { caller } from '@/trpc/server'
+import { auth } from '@/lib/auth';
+import { HomeView } from '@/module/home/ui/views/home-view';
+import { headers } from 'next/headers';
+import { redirect } from 'next/navigation';
+import React from 'react';
 
-import { headers } from 'next/headers'
-import { redirect } from 'next/navigation'
-import React from 'react'
+const Page = async (): Promise<JSX.Element> => {
+  const headersList = await headers();
+  const session = await auth.api.getSession({ headers: headersList });
 
-const Page = async () => {
- // const data= await caller.hello({text:"piyush"})
-  const session = await auth.api.getSession({
-    headers:await headers()
-  }); 
-  if(!session){
-    redirect("/auth/sign-in");
+  if (!session) {
+    redirect('/auth/sign-in');
   }
-  // return <p>{data.greeting}</p>
-  return (
-   <HomeView/>
-  )
-}
 
-export default Page
+  // TODO: Add personalization to HomeView based on session.user
+  return <HomeView />;
+};
+
+export default Page;
