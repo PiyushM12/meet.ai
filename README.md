@@ -1,99 +1,111 @@
-#  Meet.ai
+# 🤖 Meet.ai
 
-Meet.ai is a full-stack, modular, and scalable meeting management platform built with Next.js 14, tRPC, Drizzle ORM, and TailwindCSS. It supports intelligent agent management, secure authentication, and real-time meeting operations.
+Meet.ai is a full-stack, modular, and scalable meeting management platform built with **Next.js 14**, **tRPC**, **Drizzle ORM**, and **TailwindCSS**. It supports intelligent agent management, secure authentication, and real-time meeting operations.
 
 ---
 
-##  Features
+## 🚀 Features
 
 - ✨ Modular architecture with `app/` and `module/` directories
 - 🔒 Authentication using secure session logic
 - 🧠 Agent and meeting management with rich UI
 - ⚡ Server Actions and API routing via `tRPC`
-- 🗓️ Google Calendar OAuth Integration
+- 🗓️ Google Calendar OAuth integration
 - 🧱 Drizzle ORM for fully-typed SQL
 - 🎯 Built-in filters, dialogs, error boundaries, and hydration safety
-- 📱 Responsive layout using shadcn/ui + TailwindCSS
+- 📱 Responsive layout using `shadcn/ui` + `TailwindCSS`
 
 ---
 
-##  Project Structure
+## 📁 Project Structure
 
-meet.ai/
-├── src/                        # Main application source
-│
-├── app/                        # Next.js App Router structure
-│   ├── (dashboard)/            # Protected dashboard layout and routes
-│   │   ├── agents/             # Agent pages and [agentId] route
-│   │   └── meetings/           # Meeting pages and [meetingId] route
-│   ├── auth/                   # Sign-in, Sign-up flows and layout
-│   ├── call/                   # Call UI by [meetingId]
-│   ├── api/                    # API routes (auth, calendar, webhook, trpc)
-│   ├── globals.css             # Global styles
-│   └── layout.tsx              # Root layout for all pages
-│
-├── components/                 # Shared and reusable UI components
-│   ├── ui/                     # Design system (buttons, forms, dialogs, etc.)
-│   ├── loading-state.tsx       # Generic loading UI
-│   ├── error-state.tsx         # Generic error UI
-│   └── ...                     # Other reusable components
-│
-├── db/                         # Database layer (Drizzle ORM)
-│   ├── schema.ts               # DB schema definitions
-│   └── index.ts                # Drizzle DB client config
-│
-├── hooks/                      # Custom reusable React hooks
-│   ├── use-confirm.tsx
-│   └── use-mobile.ts
-│
-├── lib/                        # Helper libraries
-│   ├── auth.ts                 # Server-side auth logic
-│   ├── auth-client.ts          # Client-side auth logic
-│   ├── stream-video.ts         # Video call utilities
-│   └── utils.ts                # General utility functions
-│
-├── module/                     # Feature modules
-│   ├── agents/                 # Agent logic (filters, views, components)
-│   ├── meetings/               # Meetings logic (schemas, forms, filters)
-│   ├── call/                   # Call module and views
-│   ├── auth/                   # Auth views (sign-in/up)
-│   ├── dashboard/              # Dashboard UI (navbar, sidebar, commands)
-│   └── home/                   # Home page
-│
-├── trpc/                       # tRPC integration
-│   ├── routers/                # tRPC route definitions
-│   ├── server.tsx              # Server-side helpers
-│   ├── client.tsx              # Client-side hooks
-│   └── query-client.ts         # React Query client
-│
-├── constants.ts                # App-wide constants
-├── drizzle.config.ts           # Drizzle config
-├── next.config.ts              # Next.js config
-├── eslint.config.mjs           # ESLint config
-├── postcss.config.mjs          # PostCSS config
-├── tsconfig.json               # TypeScript config
-├── components.json             # Custom component metadata
-└── README.md                   # Project documentation
+> View this in a Mermaid-enabled markdown renderer (GitHub, Notion with plugin, etc.)
+
+```mermaid
+graph TD
+  A[meet.ai] --> A1[src]
+  A --> B[README.md]
+  A --> C[package.json]
+  A --> D[next.config.ts]
+  A --> E[tsconfig.json]
+  A --> F[drizzle.config.ts]
+  A --> G[eslint.config.mjs]
+  A --> H[components.json]
+
+  A1 --> A1a[constants.ts]
+  A1 --> A1b[app]
+  A1 --> A1c[components]
+  A1 --> A1d[db]
+  A1 --> A1e[hooks]
+  A1 --> A1f[lib]
+  A1 --> A1g[module]
+  A1 --> A1h[trpc]
+
+  A1b --> A1b1[globals.css]
+  A1b --> A1b2[layout.tsx]
+  A1b --> A1b3[(dashboard)]
+  A1b --> A1b4[auth]
+  A1b --> A1b5[call]
+  A1b --> A1b6[api]
+
+  A1b3 --> D1[layout.tsx]
+  A1b3 --> D2[page.tsx]
+  A1b3 --> D3[agents]
+  A1b3 --> D4[meetings]
+  D3 --> D3a[page.tsx]
+  D3 --> D3b[[agentId]/page.tsx]
+  D4 --> D4a[page.tsx]
+  D4 --> D4b[[meetingId]/page.tsx]
+
+  A1b4 --> E1[layout.tsx]
+  A1b4 --> E2[sign-in/page.tsx]
+  A1b4 --> E3[sign-up/page.tsx]
+
+  A1b5 --> F1[layout.tsx]
+  A1b5 --> F2[[meetingId]/page.tsx]
+
+  A1b6 --> G1[auth/[...all]/route.ts]
+  A1b6 --> G2[calendar/oauth/{start, callback}/route.ts]
+  A1b6 --> G3[trpc/[trpc]/route.ts]
+  A1b6 --> G4[webhook/route.ts]
+
+  A1c --> C1[command-select.tsx]
+  A1c --> C2[data-table.tsx]
+  A1c --> C3[error-state.tsx]
+  A1c --> C4[loading-state.tsx]
+  A1c --> C5[ui/...many primitives]
+
+  A1d --> D1[schema.ts]
+  A1d --> D2[index.ts]
+
+  A1e --> E1[use-confirm.tsx]
+  A1e --> E2[use-mobile.ts]
+
+  A1f --> F1[auth.ts]
+  A1f --> F2[stream-video.ts]
+  A1f --> F3[utils.ts]
+
+  A1g --> G1[agents]
+  A1g --> G2[meetings]
+  A1g --> G3[call]
+  A1g --> G4[dashboard]
+  A1g --> G5[auth]
+  A1g --> G6[home]
+
+  A1h --> H1[client.tsx]
+  A1h --> H2[init.ts]
+  A1h --> H3[query-client.ts]
+  A1h --> H4[server.tsx]
+  A1h --> H5[routers/_app.ts]
 
 
----
 
-## 🛠️ Tech Stack
 
-| Layer       | Tech                                                   |
-|-------------|--------------------------------------------------------|
-| Framework   | Next.js 14 (App Router)                                |
-| Styling     | TailwindCSS + shadcn/ui                                |
-| Backend     | tRPC + React Query                                     |
-| Database    | Drizzle ORM (PostgreSQL recommended)                   |
-| Auth        | Session-based auth with `auth.api.getSession()`       |
-| Deployment  | Vercel-ready, SSR friendly                             |
+All pages and layouts follow app/ routing convention
 
----
+Components are colocated with views in module/
 
-## 📦 Getting Started
+API routes and backend logic go under app/api/
 
-### 1. Install dependencies
+Safe with Suspense, ErrorBoundaries, and Server Actions
 
-```bash
-pnpm install
