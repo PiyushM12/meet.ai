@@ -38,7 +38,7 @@ const Page = async ({ params }: Props) => {
 
   const queryClient = getQueryClient();
 
-  // eslint-disable-next-line @typescript-eslint/no-floating-promises
+   
   void queryClient.prefetchQuery(
     trpc.meetings.getOne.queryOptions({ id: meetingId })
   );
