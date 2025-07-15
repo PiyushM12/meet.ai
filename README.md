@@ -17,17 +17,4 @@ Meet.ai is a full-stack, modular, and scalable meeting management platform built
 
 ---
 
-## 📁 Project Structure
-
-i will add it, its causing some errors
-
-
-
-All pages and layouts follow app/ routing convention
-
-Components are colocated with views in module/
-
-API routes and backend logic go under app/api/
-
-Safe with Suspense, ErrorBoundaries, and Server Actions
 
